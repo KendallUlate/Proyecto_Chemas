@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+   
+        <title>Chemas</title>
+
+    </head>
+    <body>
+        
+        
+        <!-- 3 Sección principal para mostrar la informaccion de la entidad informacion -->
+        <section th:fragment="listadoInformacion" id="informacion">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-15">
+                        <div class="card" style="background-color: #004080; color: white;">
+                            <div class="card-header">
+                                <h2>[[#{informacion.listado}]]</h2>
+                                <h4>[[#{informacion.correo}]]</h4>
+                                <h4>[[#{informacion.telefono}]]</h4>
+                                <h4>[[#{informacion.descripcion}]]</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
