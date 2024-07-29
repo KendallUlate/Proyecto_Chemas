@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+
+        <title>Chemas</title>
+
+    </head>
+    <body>
+
+        <!--  Sección para mostrar las camisas para la eurocopa -->
+        <section th:fragment="listadoCopaAmerica" id="copaAmerica">
+
+            <div class="row">
+
+                <h1> </h1>
+                <h1> </h1>
+                <h1> </h1>
+                <aside class="col-md-2">
+
+                    <div class="card" style="border: 1px solid black; background-color: #D1D1D1">
+                        <h5 style="color: #FFFFFF;">Aqui te ofrecemos un listado detallado de las camisas de las copa america, para seleccionar a tu gusto.</h5>
+                    </div>
+                </aside>
+                <div class="col-md-9">
+                    <div class="row">
+                        <!-- Columna derecha (Iteración sobre los principios) - Llamado a las chemas en general -->
+                        <div th:each="copaAmerica : ${copaAmerica}" class="col-md-3 mb-4">
+                            <div class="card" style="width: 18rem;">
+                                <img th:src="@{${copaAmerica.rutaImagen}}" class="card-img-top" alt="Imagen chema">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${copaAmerica.precio} + ' CRC'">Precio</h5>
+                                        <a href="#" class="btn btn-light" style="border: 1px solid black;">COMPRAR</a>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
