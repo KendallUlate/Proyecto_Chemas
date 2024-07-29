@@ -9,9 +9,8 @@
     </head>
     <body>
 
-
-        <!-- 3 Sección principal para mostrar la informaccion de la entidad informacion -->
-        <section th:fragment="listadoPrincipal" id="principal">
+        <!--  Sección para mostrar las camisas para la eurocopa -->
+        <section th:fragment="listadoEquipos" id="equipos">
 
             <div class="row">
 
@@ -21,17 +20,17 @@
                 <aside class="col-md-2">
 
                     <div class="card" style="border: 1px solid black; background-color: #D1D1D1">
-                        <h5 style="color: #FFFFFF;">La tienda chemas donde podras encontrar las camisas de tus equipos favoritos para apoyarlos</h5>
+                        <h5 style="color: #FFFFFF;">Aqui te ofrecemos un listado detallado de las camisas de las copa america, para seleccionar a tu gusto.</h5>
                     </div>
                 </aside>
                 <div class="col-md-9">
                     <div class="row">
                         <!-- Columna derecha (Iteración sobre los principios) - Llamado a las chemas en general -->
-                        <div th:each="principal : ${principal}" class="col-md-3 mb-4">
+                        <div th:each="equipos : ${equipos}" class="col-md-3 mb-4">
                             <div class="card" style="width: 18rem;">
-                                <img th:src="@{${principal.rutaImagen}}" class="card-img-top" alt="Imagen chema">
+                                <img th:src="@{${equipos.rutaImagen}}" class="card-img-top" alt="Imagen chema">
                                     <div class="card-body">
-                                        <h5 class="card-title" th:text="${principal.precio} + ' CRC'">Precio</h5>                                     
+                                        <h5 class="card-title" th:text="${equipos.precio} + ' CRC'">Precio</h5>
                                         <a href="#" class="btn btn-light" style="border: 1px solid black;">COMPRAR</a>
                                     </div>
                                 </img>
@@ -43,3 +42,4 @@
         </section>
     </body>
 </html>
+

@@ -1,3 +1,4 @@
+
 package com.chemas.domain;
 
 import jakarta.persistence.*;
@@ -7,8 +8,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "chemas")
-public class Principal implements Serializable{
-    
+public class CopaAmerica  implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -28,7 +28,7 @@ public class Principal implements Serializable{
     @Column(name = "ruta_imagen")
     private String rutaImagen;
     
-    public Principal() {
+    public CopaAmerica() {
     }
     
 }

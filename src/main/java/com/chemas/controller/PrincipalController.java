@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.chemas.controller;
 
 import com.chemas.domain.Principal;
@@ -12,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-/**
- *
- * @author XPC
- */
+
 @Controller
 public class PrincipalController {
 
@@ -24,8 +17,8 @@ public class PrincipalController {
 
     @GetMapping("/")
     public String listar(Model model) {
-        List<Principal> principals = principalService.listarPrincipal();
-        model.addAttribute("principals", principals);
+        List<Principal> principal = principalService.listarPrincipal();
+        model.addAttribute("principal", principal);
         return "index";
     }
 

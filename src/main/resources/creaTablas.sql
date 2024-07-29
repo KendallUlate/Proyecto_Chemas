@@ -4,7 +4,7 @@ drop user if exists usuario_prueba;
 CREATE SCHEMA chemas ;
 
 /*Se crea un usuario para la base de datos llamado "usuario_prueba" y tiene la contraseña "Usuario_Clave."*/
-create user 'usuario_prueba'@'%' identified by 'Usuar1o_Clave.';
+create user 'usuario_prueba'@'%' identified by 'Usuario_Clave.';
 
 /*Se asignan los prvilegios sobr ela base de datos Chemas al usuario creado */
 grant all privileges on chemas.* to 'usuario_prueba'@'%';
@@ -67,17 +67,29 @@ INSERT INTO chemas.tipo (nombreTipo) VALUES ('Euro Copa');
 INSERT INTO chemas.tipo (nombreTipo) VALUES ('Copa America');
 INSERT INTO chemas.tipo (nombreTipo) VALUES ('Club deportivo');
 
+
 /*Chemas*/
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/A-Camiseta-Argentina-Copa-America-2024-1-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','M','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Colombia-Copa-America-2024-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','L','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Costa-Rica-Copa-America-2024-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/A-Camiseta-Alemania-EURO-2024-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/B-Camiseta-Espana-EURO-2024-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Francia-EURO-2024-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/camisetas-champions-league-2023-24-bayern-munich-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/camisetas-premier-league-2023-24-arsenal-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/camisetas-la-liga-2023-24-real-madrid-1.jpg');
-INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/camisetas-premier-league-2023-24-manchester-united-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('54','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Brasil-Copa-America-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('907868000','M','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Brasil-Copa-America-2024-5.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('7','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Paraguay-Copa-America-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('9007500','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Colombia-Copa-America-2024-5.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('900556400','L','Copa America','https://todosobrecamisetas.com/wp-content/uploads/A-Camiseta-Argentina-Copa-America-2024-1-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Paraguay-Copa-America-2024-5.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','L','Copa America','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Costa-Rica-Copa-America-2024-5.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/C-Camiseta-Estados-Unidos-Copa-America-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Copa America','https://todosobrecamisetas.com/wp-content/uploads/C-Camiseta-Uruguay-Copa-America-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','M','Copa America','https://todosobrecamisetas.com/wp-content/uploads/C-Camiseta-Panama-Copa-America-2024-1.jpg');
+
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','M','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/A-Camiseta-Alemania-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','M','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/A-Camiseta-Escocia-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/A-Camiseta-Hungria-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/A-Camiseta-Suiza-EURO-2024-1-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/B-Camiseta-Espana-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','L','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/B-Camiseta-Italia-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','L','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/B-Camiseta-Albania-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','L','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/C-Camiseta-Inglaterra-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','S','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/D-Camiseta-Francia-EURO-2024-1.jpg');
+INSERT INTO chemas.chemas (precio,talla,tipo,ruta_imagen) VALUES ('90000','M','Euro Copa','https://todosobrecamisetas.com/wp-content/uploads/E-Camiseta-Belgica-EURO-2024-1.jpg');
 
 /*TABLAS A ELIMINAR*/
 create table chemas.informacion (
