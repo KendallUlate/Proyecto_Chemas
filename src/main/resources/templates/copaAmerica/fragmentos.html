@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Chemas</title>
+    </head>
+    <body>
+        <!-- Sección para mostrar las camisas para la copa américa -->
+        <section th:fragment="listadoCopaAmerica" id="copaAmerica">
+            <div class="row">
+                <h1> </h1>
+                <h1> </h1>
+                <h1> </h1>
+                <aside class="col-md-2">
+                    <div class="card" style="border: 1px solid black; background-color: #D1D1D1">
+                        <h5 style="color: #FFFFFF;">Aqui te ofrecemos un listado detallado de las camisas de la copa américa, para seleccionar a tu gusto.</h5>
+                    </div>
+                </aside>
+                <div class="col-md-9">
+                    <div class="row">
+                        <!-- Columna derecha (Iteración sobre los productos) -->
+                        <div th:each="copaAmerica : ${copaAmerica}" class="col-md-3 mb-4">
+                            <div class="card" style="width: 18rem;">
+                                <img th:src="@{${copaAmerica.rutaImagen}}" class="card-img-top" alt="Imagen chema">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${copaAmerica.precio} + ' CRC'">Precio</h5>
+                                        <a href="#" class="btn btn-light btn-sm" style="border: 1px solid black;" data-bs-toggle="modal" data-bs-target="#Comprar" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('USER')">[[#{accion.comprar}]]</a>
+                                        <a th:href="@{/copaAmerica/eliminar/{id}(id=${copaAmerica.idChema})}" class="btn btn-danger btn-sm" sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]</a>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section th:fragment="Comprar">
+                <div id="Comprar" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header bg-info text-white">
+                                <h5 class="modal-title">[[#{producto.comprar}]]</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form th:action="@{/compra/guardar}" method="POST" class="was-validated">
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="cantidad">[[#{producto.cantidad}]]</label>
+                                        <input type="number" class="form-control" name="cantidad" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="talla">[[#{producto.talla}]]</label>
+                                        <input type="text" class="form-control" name="talla" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tarjeta">[[#{producto.tarjeta}]]</label>
+                                        <input type="text" class="form-control" name="tarjeta" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="codigo">[[#{producto.codigo}]]</label>
+                                        <input type="text" class="form-control" name="codigo" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="encargado">[[#{producto.encargado}]]</label>
+                                        <input type="text" class="form-control" name="encargado" required="true"/>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">Comprar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarCategoria">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/categoria/guardar}" 
+                          th:object="${categoria}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+                        <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                        <section th:replace="~{categoria/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>[[#{accion.actualizar}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="descripcion">[[#{categoria.descripcion}]]</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="descripcion" th:field="*{descripcion}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="activo">[[#{categoria.activo}]]</label>
+                                                    <input class="form-check-input" 
+                                                           type="checkbox" 
+                                                           name="activo" 
+                                                           id="activo"
+                                                           th:field="*{activo}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="imagen">[[#{categoria.rutaImagen}]]</label>
+                                                    <input class="form-control" type="file" name="imagenFile"
+                                                           onchange="readURL(this);" />
+                                                    <img id="blah" th:src="@{${categoria.rutaImagen}}" alt="your image" height="200"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/categoria/listado}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

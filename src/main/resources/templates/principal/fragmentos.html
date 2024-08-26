@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+
+        <title>Chemas</title>
+
+    </head>
+    <body>
+
+
+        <!-- 3 Sección principal para mostrar la informaccion de la entidad informacion -->
+        <section th:fragment="listadoPrincipal" id="principal">
+
+            <div class="row">
+
+                <h1> </h1>
+                <h1> </h1>
+                <h1> </h1>
+                <aside class="col-md-2">
+
+                    <div class="card" style="border: 1px solid black; background-color: #D1D1D1">
+                        <h5 style="color: #FFFFFF;">La tienda chemas donde podras encontrar las camisas de tus equipos favoritos para apoyarlos</h5>
+                    </div>
+                </aside>
+                <div class="col-md-9">
+                    <div class="row">
+                        <!-- Columna derecha (Iteración sobre los principios) - Llamado a las chemas en general -->
+                        <div th:each="principal : ${principal}" class="col-md-3 mb-4">
+                            <div class="card" style="width: 18rem;">
+                                <img th:src="@{${principal.rutaImagen}}" class="card-img-top" alt="Imagen chema">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${principal.precio} + ' CRC'">Precio</h5>                                     
+                                    <a href="#" class="btn btn-light btn-sm" style="border: 1px solid black;" data-bs-toggle="modal" data-bs-target="#Comprar" th:data-id="${principal.idChema}" sec:authorize="hasRole('ROLE_ADMIN')or hasRole('USER')">[[#{accion.comprar}]]</a>
+                                    <a th:href="@{~/eliminar/{id}(id=${principal.idChema})}" class="btn btn-danger btn-sm" sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]</a>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section th:fragment="Comprar">
+                <div id="Comprar" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header bg-info text-white">
+                                <h5 class="modal-title">[[#{producto.comprar}]]</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div> 
+                            <form th:action="@{/compra/guardar}" method="POST" class="was-validated">
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="cantidad">[[#{producto.cantidad}]]</label>
+                                        <input type="number" class="form-control" name="cantidad" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="talla">[[#{producto.talla}]]</label>
+                                        <input type="text" class="form-control" name="talla" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tarjeta">[[#{producto.tarjeta}]]</label>
+                                        <input type="text" class="form-control" name="tarjeta" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="codigo">[[#{producto.codigo}]]</label>
+                                        <input type="text" class="form-control" name="codigo" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="encargado">[[#{producto.encargado}]]</label>
+                                        <input type="text" class="form-control" name="encargado" required="true"/>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">Comprar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+                <script>
+            // Configura el modal para que utilice el ID del producto seleccionado
+            document.addEventListener('DOMContentLoaded', function () {
+                var compraBtns = document.querySelectorAll('[data-bs-target="#Comprar"]');
+                compraBtns.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var id = btn.getAttribute('th:data-id');
+                        document.getElementById('chemaId').value = id;
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

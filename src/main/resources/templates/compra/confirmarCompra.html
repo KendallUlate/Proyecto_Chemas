@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Compra Exitosa</title>
+</head>
+<body>
+    <!-- Modal de confirmación -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Compra Exitosa</title>
+</head>
+<body>
+    <!-- Modal de confirmación -->
+    <section th:fragment="compraExitosa">
+        <div id="compraExitosaModal" class="modal fade" tabindex="-1" aria-labelledby="compraExitosaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="compraExitosaModalLabel">Compra Exitosa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body  text-center" >
+                        <img src="data:image/png;base64,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" alt="Check" class="img-fluid" style="max-width: 500px;"/>
+                        <p>¡Compra exitosa!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeModalButton" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+    <!-- Script para mostrar la modal si `compraExitosa` está en el modelo -->
+    <script th:if="${compraExitosa}">
+        document.addEventListener('DOMContentLoaded', function () {
+            var compraExitosaModal = new bootstrap.Modal(document.getElementById('compraExitosaModal'));
+            compraExitosaModal.show();
+
+            // Manejar el evento de clic del botón de cerrar
+            document.getElementById('closeModalButton').addEventListener('click', function () {
+                window.location.href = '/'; // Redirige a la ruta deseada
+            });
+        });
+    </script>
+</body>
+</html>
